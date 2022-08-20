@@ -48,7 +48,7 @@ extensions = [
     # 'sphinx.ext.doctest',
     # 'sphinx.ext.mathjax',
     "sphinx.ext.todo",
-    # 'sphinx.ext.viewcode',
+    "sphinx.ext.viewcode",
     # 'sphinxcontrib.httpdomain',
     "sphinx_rtd_theme",
 ]
