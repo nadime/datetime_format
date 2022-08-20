@@ -54,6 +54,11 @@ _PARSE_DT_TRANSLATION = r"^(?P<dir>[MmPp])(?P<num>\d+)(?P<size>[A-Za-z])$"
 _dtformat = functools.partialmethod(datetime.strftime)
 _dttranslate = functools.partialmethod(timedelta)
 
+
+def _translate_int_str(f, dt):
+    return str(int(f(dt)))
+
+
 _DATE_DELTAS = ["days", "weeks", "months", "years"]
 
 # case sensitive
@@ -116,6 +121,12 @@ _SUPPORTED_DATETIME_OUTPUT_FORMATS = {
     "YY": "%y",  # YY
     "YYYY": "%Y",  # YYYY
     "LOCALE_DT": "%c",  # Locale date-time representation
+    "TIMESTAMP": (
+        functools.partial(_translate_int_str, datetime.timestamp)
+    ),  # timestamp (UTC)
+    "TS": (
+        functools.partial(_translate_int_str, datetime.timestamp)
+    ),  # timestamp (UTC)
     "HHMMSS": "%H:%M:%S",  # HH:MM:SS (24-hour)
     "HHMMSSZZ": "%H:%M:%S.%f",  # HH:MM:SS.ZZZZZZ (24-hour)
     "AMPM": "%p",  # AM/PM

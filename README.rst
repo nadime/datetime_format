@@ -34,8 +34,8 @@ formatting to be done inline, making configuration files easier to comprehend.
 .. image:: https://img.shields.io/badge/license-MIT-black
     :target: LICENSE
 
-.. image:: https://readthedocs.org/projects/datetime_formatter/badge/?version=latest
-    :target: https://datetime_formatter.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/datetime-formatter/badge/?version=latest
+    :target: https://datetime-formatter.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 
@@ -59,6 +59,23 @@ The documentation is hosted on `Read the Docs`_.
 
 Quick Start
 -----------
+
+``datetime_formatter`` is intended to be used in one of two ways.  You can either
+use the provided ``DateTimeFormatter`` class which inherits from
+``string.Formatter``, but overrides ``.format`` to provide unique functionality.
+
+.. code-block:: python3
+
+  from datetime_formatter import DateTimeFormatter
+
+  dtf = DateTimeFormatter("2005-03-01 09:30:00")
+  dtf.format("Format this way %ISODATETIME% or that way %YYYY%-%MM%-%DD% %HH%:%MM:%SS%")
+  dtf.format("Or use translaters to change the datetime: %YYYYMMDD-P1Y%")
+
+Or use the provided convenience function ``dtformat`` (aliased to ``dtfmt`` as well):
+
+.. code-block:: python3
+
 
 .. code-block:: python3
 
@@ -318,6 +335,8 @@ us how far to move in the provided ``units``.
             - Business month(s)
           * - ``K``
             - Business year(s)
+	  * - ``TS``
+	    - Timestamp (UTC seconds since epoch)
 
 You can string together any combination of these three translation parts, e.g.:
 
