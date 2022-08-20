@@ -76,9 +76,6 @@ Or use the provided convenience function ``dtformat`` (aliased to ``dtfmt`` as w
 
 .. code-block:: python3
 
-
-.. code-block:: python3
-
   from datetime import datetime
   from datetime_formatter import dtfmt
 
